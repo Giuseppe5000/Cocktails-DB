@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Navbar from './components/Navbar'
+import SearchCocktail from './components/SearchCocktail'
+import CocktailCard from './components/CocktailCard'
 
-function App() {
+const App = () => {
+
+  const [cocktails, setCocktails] = useState()
+
+  const handleSearchCocktail = async (cocktail) => {
+    let response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktail}`);
+    let data = await response.json();
+    setCocktails(data.drinks);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Navbar />
+      <SearchCocktail onSearchCocktail={handleSearchCocktail} />
+      <div className="container text-center">
+        <div className="row">
+
+          {cocktails &&  cocktails.map( (cocktail) => <CocktailCard key={cocktail.idDrink} name={cocktail.strDrink} img={cocktail.strDrinkThumb} instructions={cocktail.strInstructionsIT}/> )}
+          
+        </div>
+      </div>
+
+    </>
+  )
 }
 
-export default App;
+export default App
