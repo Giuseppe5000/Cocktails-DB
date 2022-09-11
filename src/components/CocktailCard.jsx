@@ -1,18 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react';
 
 const CocktailCard = (props) => {
+
+    const [showInstructions, setShowInstructions] = useState(false);
+
     return (
-        <div className="col">
-            <div className="card " style={{width: '18rem'}}>
-                <img src={props.img} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">{props.name}</h5>
-                        <p className="card-text">{props.instructions}</p>
-                    </div>
+        <div className="col mb-5">
+            <div className="card " style={{ width: '18rem' }}>
+                {!showInstructions && <img src={props.img} className="card-img-top" alt="..." />}
+                <div className="card-body">
+                    {showInstructions && <p className="card-text">{props.instructions ? props.instructions : "No instructions provided"}</p>}
+                    <h5 className="card-title">{props.name}</h5>
+                    <button type="button" className="btn btn-dark" onClick={() => setShowInstructions(!showInstructions)}>Instructions</button>
+                </div>
             </div>
         </div>
 
     )
 }
 
-export default CocktailCard
+export default CocktailCard;
