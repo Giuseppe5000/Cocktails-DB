@@ -6,16 +6,7 @@ const CocktailCard = (props) => {
     const [showIgredients, setShowIngredients] = useState(false);
 
     const getIngredients = () => {
-        let ingredients = [];
-        let i = 1;
-        do {
-            let ingredient = props.cocktail[`strIngredient${i}`];
-            let measure = props.cocktail[`strMeasure${i}`];
-            ingredients.push(`${ingredient} ${measure ? measure : ''}`);
-            i++;
-        } while (props.cocktail['strIngredient' + i]);
-
-        return ingredients;
+        return props.ingredients.split(",")
     };
 
     return (

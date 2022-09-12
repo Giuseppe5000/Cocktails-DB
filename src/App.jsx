@@ -8,7 +8,7 @@ const App = () => {
   const [cocktails, setCocktails] = useState();
 
   const handleSearchCocktail = async (cocktail) => {
-    let response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktail}`);
+    let response = await fetch(`http://localhost:3001/api/${cocktail}`); // Using my local API
     let data = await response.json();
     setCocktails(data.drinks);
   }
@@ -20,7 +20,7 @@ const App = () => {
       <SearchCocktail onSearchCocktail={handleSearchCocktail} />
       <div className="container text-center">
         <div className="row row-cols-auto justify-content-center">
-          {cocktails && cocktails.map((cocktail) => <CocktailCard key={cocktail.idDrink} cocktail={cocktail} name={cocktail.strDrink} img={cocktail.strDrinkThumb} instructions={cocktail.strInstructions} />)}
+          {cocktails && cocktails.map((cocktail) => <CocktailCard key={cocktail.IDCocktail} ingredients={cocktail.Ingredients} name={cocktail.Name} img={cocktail.Thumb} instructions={cocktail.Instructions} />)}
         </div>
       </div>
 
