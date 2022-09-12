@@ -20,7 +20,7 @@ const App = () => {
       <SearchCocktail onSearchCocktail={handleSearchCocktail} />
       <div className="container text-center">
         <div className="row row-cols-auto justify-content-center">
-          {cocktails && cocktails.map((cocktail) => <CocktailCard key={cocktail.idDrink} name={cocktail.strDrink} img={cocktail.strDrinkThumb} instructions={cocktail.strInstructions} />)}
+          {cocktails && cocktails.map((cocktail) => <CocktailCard key={cocktail.idDrink} cocktail={cocktail} name={cocktail.strDrink} img={cocktail.strDrinkThumb} instructions={cocktail.strInstructions} />)}
         </div>
       </div>
 
