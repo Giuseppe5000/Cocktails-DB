@@ -19,7 +19,7 @@ const App = () => {
       <h1 className="text-center fw-bold font-monospace text-white bg-dark" >Your endless cocktail list</h1>
       <SearchCocktail onSearchCocktail={handleSearchCocktail} />
       <div className="container text-center">
-        <div className="row row-cols-auto">
+        <div className="row row-cols-auto justify-content-center">
           {cocktails && cocktails.map((cocktail) => <CocktailCard key={cocktail.idDrink} name={cocktail.strDrink} img={cocktail.strDrinkThumb} instructions={cocktail.strInstructions} />)}
         </div>
       </div>
