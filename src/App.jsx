@@ -8,7 +8,7 @@ const App = () => {
   const [cocktails, setCocktails] = useState();
 
   const handleSearchCocktail = async (cocktail) => {
-    let response = await fetch(`http://localhost:3001/api/${cocktail}`); // Using my local API
+    let response = await fetch(`http://localhost:3001/api/name/${cocktail}`); // Using my local API
     let data = await response.json();
     setCocktails(data.data);
   }

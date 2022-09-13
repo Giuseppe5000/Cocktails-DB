@@ -20,7 +20,7 @@ const CocktailCard = (props) => {
                     <button type="button" className="btn btn-dark ms-1" onClick={() => setShowIngredients(!showIgredients)}>Ingredients</button>
                 </div>
                 <ul className="list-group list-group-flush">
-                    {showIgredients && getIngredients().map((el) => <li className="list-group-item">{el}</li>)}
+                    {showIgredients && getIngredients().map((el) => el && <li className="list-group-item">{el}</li> )}
                 </ul>
             </div>
         </div>
